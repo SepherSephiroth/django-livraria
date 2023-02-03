@@ -11,6 +11,7 @@ from rest_framework.generics import (ListCreateAPIView,
 from rest_framework.response import Response
 from rest_framework.serializers import ModelSerializer
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
 
 from core.models import Categoria
 
@@ -104,5 +105,11 @@ class CategoriasListGeneric(ListCreateAPIView):
 
 class CategoriaDetailGeneric(RetrieveUpdateDestroyAPIView):
   lookup_field = 'id'
+  queryset = Categoria.objects.all()
+  serializer_class = CategoriaSerializer
+
+# ModelViewSet
+
+class CategoriaViewSet(ModelViewSet):
   queryset = Categoria.objects.all()
   serializer_class = CategoriaSerializer
