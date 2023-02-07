@@ -4,3 +4,4 @@ from .categoriaClass import CategoriaView
 from .categoriaGeneric import CategoriaDetailGeneric, CategoriasListGeneric
 from .testesIniciais import teste
 from .editora import EditoraViewSet
+from .autor import AutorViewSet
