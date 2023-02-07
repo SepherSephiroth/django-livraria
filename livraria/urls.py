@@ -23,10 +23,10 @@ router = routers.DefaultRouter()
 router.register(r'categorias', views.CategoriaViewSet)
 router.register(r'editoras', views.EditoraViewSet)
 router.register(r'autores', views.AutorViewSet)
+router.register(r'livros', views.LivroViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', views.teste),
     path('categorias-class/', views.CategoriaView.as_view()),
     path('categorias/<int:id>/', views.CategoriaView.as_view()),
     path('categorias-apiview/', views.CategoriaList.as_view()),

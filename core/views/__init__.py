@@ -5,3 +5,4 @@ from .categoriaGeneric import CategoriaDetailGeneric, CategoriasListGeneric
 from .testesIniciais import teste
 from .editora import EditoraViewSet
 from .autor import AutorViewSet
+from .livro import LivroViewSet
