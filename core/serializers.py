@@ -1,7 +1,8 @@
+from django.contrib.auth.models import User
 from rest_framework.serializers import (CharField, ModelSerializer,
                                         SerializerMethodField)
 
-from .models import Autor, Categoria, Editora, Livro
+from .models import Autor, Categoria, Compra, Editora, Livro
 
 
 class CategoriaSerializer(ModelSerializer):
@@ -46,3 +47,11 @@ class LivroDetailSerializer(ModelSerializer):
     nomes_autores.append(autor.nome)
    
    return nomes_autores
+
+# Compra
+
+class CompraSerializer(ModelSerializer):
+  usuario = CharField(source='usuario.email')
+  class Meta:
+    model = Compra
+    fields = '__all__'
