@@ -72,3 +72,25 @@ class CompraSerializer(ModelSerializer):
   
   def get_status(self, obj):
     return obj.get_status_display()
+  
+
+class CriarEditarItensCompraSerializer(ModelSerializer):
+  class Meta:
+    model = ItensCompra
+    fields = ('livro','quantidade')
+
+
+class CriarEditarCompraSerializer(ModelSerializer):
+  itens = CriarEditarItensCompraSerializer(many=True)
+  class Meta:
+    model = Compra
+    fields = ('id', 'usuario', 'itens')
+
+  def create(self, validated_data):
+    itens = validated_data.pop('itens')
+    compra = Compra.objects.create(**validated_data)
+    for item in itens:
+      ItensCompra.objects.create(compra=compra, **item)
+    compra.save()
+
+    return compra
