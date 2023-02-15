@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # 3rd-party,
     'rest_framework',
     'rest_framework_simplejwt',
+    'drf_spectacular',
     #my apps
     'core',
 ]
@@ -140,5 +141,14 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Minha Livraria API',
+    'DESCRIPTION': 'API com os endpoints e documentação da minha livraria',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
 }
