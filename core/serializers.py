@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
-from rest_framework.serializers import (CharField, ModelSerializer,
-                                        SerializerMethodField)
+from rest_framework.serializers import CharField, ModelSerializer, SerializerMethodField
+
+from rest_framework import serializers
 
 from .models import Autor, Categoria, Compra, Editora, Livro, ItensCompra
 
@@ -82,6 +83,7 @@ class CriarEditarItensCompraSerializer(ModelSerializer):
 
 class CriarEditarCompraSerializer(ModelSerializer):
   itens = CriarEditarItensCompraSerializer(many=True)
+  usuario = serializers.HiddenField(default=serializers.CurrentUserDefault())
   class Meta:
     model = Compra
     fields = ('id', 'usuario', 'itens')
